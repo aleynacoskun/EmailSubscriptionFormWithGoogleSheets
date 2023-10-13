@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscribe Form To Google Sheet - Easy Tutorials</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="hero">
+        <h3> Yakında!</h3>
+        <h1>Spor Salonumuz <br>Hizmetinizde</h1>
+        <p>Daha fazla ayrıntı için abone olun</p>
+        <form name="submit-to-google-sheet">
+            <input type="email" name="Email" placeholder="Your email id" required>
+            <button type="submit"><img src ="send-icon.png" width="30px"></button>
+        </form>
+        <span>Abone olduğunuz için teşekkürler <br>Sağlıkla Kalın! </span>
+
+
+    </div>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwMfZk0kC8DHaNpUt8kuHQ7csoQs2c3kt4ZeHfS6iuXoEqZd7uYeazyCSnncxkbwbIGMA/exec'
+        const form = document.forms['submit-to-google-sheet']
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => console.log('Success!', response))
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+</body>
+</html>
